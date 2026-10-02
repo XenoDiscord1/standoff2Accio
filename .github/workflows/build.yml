@@ -1,0 +1,39 @@
+name: build
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build x64/Release
+        shell: cmd
+        run: |
+          msbuild Standoff2Cheat.sln /p:Configuration=Release /p:Platform=x64 /m /verbosity:minimal
+
+      - name: Collect artifacts
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path artifact | Out-Null
+          Copy-Item x64\Release\opengl32.dll artifact\opengl32.dll
+          if (Test-Path x64\Release\opengl32.pdb) { Copy-Item x64\Release\opengl32.pdb artifact\opengl32.pdb }
+          Copy-Item README.md artifact\README.md
+
+      - name: Upload artifact (Standoff2Cheat.zip)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Standoff2Cheat
+          path: artifact/**
+          if-no-files-found: error
