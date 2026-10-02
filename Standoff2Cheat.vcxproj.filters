@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src"><UniqueIdentifier>{10000000-0000-0000-0000-000000000001}</UniqueIdentifier></Filter>
+    <Filter Include="vendor"><UniqueIdentifier>{10000000-0000-0000-0000-000000000002}</UniqueIdentifier></Filter>
+    <Filter Include="vendor\imgui"><UniqueIdentifier>{10000000-0000-0000-0000-000000000003}</UniqueIdentifier></Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\dllmain.cpp"><Filter>src</Filter></ClCompile>
+    <ClCompile Include="src\proxy.cpp"><Filter>src</Filter></ClCompile>
+    <ClCompile Include="src\hooks.cpp"><Filter>src</Filter></ClCompile>
+    <ClCompile Include="src\chams.cpp"><Filter>src</Filter></ClCompile>
+    <ClCompile Include="src\esp.cpp"><Filter>src</Filter></ClCompile>
+    <ClCompile Include="src\gui.cpp"><Filter>src</Filter></ClCompile>
+    <ClCompile Include="src\utils.cpp"><Filter>src</Filter></ClCompile>
+    <ClCompile Include="vendor\imgui\imgui.cpp"><Filter>vendor\imgui</Filter></ClCompile>
+    <ClCompile Include="vendor\imgui\imgui_draw.cpp"><Filter>vendor\imgui</Filter></ClCompile>
+    <ClCompile Include="vendor\imgui\imgui_tables.cpp"><Filter>vendor\imgui</Filter></ClCompile>
+    <ClCompile Include="vendor\imgui\imgui_widgets.cpp"><Filter>vendor\imgui</Filter></ClCompile>
+    <ClCompile Include="vendor\imgui\imgui_demo.cpp"><Filter>vendor\imgui</Filter></ClCompile>
+    <ClCompile Include="vendor\imgui\backends\imgui_impl_win32.cpp"><Filter>vendor\imgui</Filter></ClCompile>
+    <ClCompile Include="vendor\imgui\backends\imgui_impl_opengl3.cpp"><Filter>vendor\imgui</Filter></ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\proxy.h"><Filter>src</Filter></ClInclude>
+    <ClInclude Include="src\hooks.h"><Filter>src</Filter></ClInclude>
+    <ClInclude Include="src\chams.h"><Filter>src</Filter></ClInclude>
+    <ClInclude Include="src\esp.h"><Filter>src</Filter></ClInclude>
+    <ClInclude Include="src\gui.h"><Filter>src</Filter></ClInclude>
+    <ClInclude Include="src\config.h"><Filter>src</Filter></ClInclude>
+    <ClInclude Include="src\utils.h"><Filter>src</Filter></ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\proxy_exports.def"><Filter>src</Filter></None>
+  </ItemGroup>
+</Project>
