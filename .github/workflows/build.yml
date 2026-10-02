@@ -15,6 +15,18 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Fetch ImGui (fallback if submodule missing)
+        shell: pwsh
+        run: |
+          if (-not (Test-Path vendor/imgui/imgui.cpp)) {
+            Write-Host "vendor/imgui is empty — cloning ImGui v1.91.5 directly"
+            Remove-Item vendor/imgui -Recurse -Force -ErrorAction SilentlyContinue
+            git clone --depth 1 --branch v1.91.5 https://github.com/ocornut/imgui.git vendor/imgui
+          } else {
+            Write-Host "vendor/imgui already populated (submodule or vendored)"
+          }
+          Get-ChildItem vendor/imgui | Select-Object Name
+
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
